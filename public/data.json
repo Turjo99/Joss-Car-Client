@@ -1,0 +1,74 @@
+[
+  {
+    "categoryID": "01",
+    "carName": "Toyota Axio",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FCategory%3AToyota_Harrier&psig=AOvVaw1gztuf8UbrYEwWUYSIZXbL&ust=1669314637484000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCMCv-bP3xPsCFQAAAAAdAAAAABAS"
+  },
+  {
+    "categoryID": "01",
+    "carName": "Toyota Allion",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://i.pinimg.com/736x/2e/0e/86/2e0e866ee875d994eb5ac2480d765178.jpg"
+  },
+  {
+    "categoryID": "01",
+    "carName": "Toyota Crown",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://hips.hearstapps.com/hmg-prod/images/2023-toyota-crown-101-1657642173.jpg?crop=0.729xw:0.820xh;0.218xw,0.0481xh&resize=640:*"
+  },
+  {
+    "categoryID": "02",
+    "carName": "Tesla Model Y",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://tesla-cdn.thron.com/delivery/public/image/tesla/91abd4c7-32a1-41cc-ade5-b64774dbea61/bvlatuR/std/2880x1800/Model-Y-Main-Hero-Desktop-Global?quality=auto-medium&amp;format=auto"
+  },
+  {
+    "categoryID": "02",
+    "carName": "Tesla Model S",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://tesla-cdn.thron.com/delivery/public/image/tesla/48b20b9d-9322-4cf9-b079-44797fc32600/bvlatuR/std/0x0/AWD_hero@2"
+  },
+  {
+    "categoryID": "02",
+    "carName": "Tesla Model X",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://tesla-cdn.thron.com/delivery/public/image/tesla/fea697c3-11c0-411a-8dd4-8d8af54a3a20/bvlatuR/std/4096x2560/MX-Interior-Hero-Desktop-LHD"
+  },
+  {
+    "categoryID": "03",
+    "carName": "BMW THE 5",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://www.bmw.com.bd/content/dam/bmw/marketASIA/bmw_com_bd/image_large/bmw-home-teaser-the5-1680x756.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1616393284825.jpg"
+  },
+  {
+    "categoryID": "03",
+    "carName": "BMW THE 7",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://www.bmw.com.bd/content/dam/bmw/marketASIA/bmw_com_bd/image_large/bmw-home-teaser-the7-1680x756.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1616393731198.jpg"
+  },
+  {
+    "categoryID": "03",
+    "carName": "BMW THE X5",
+    "originalPrice": "25.5",
+    "sellPrice": "16.5",
+    "condition": "New Condition",
+    "img": "https://www.bmw.com.bd/content/dam/bmw/common/all-models/x-series/x5/2019/highlights/bmw-x5-highlights-sp-xxl.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1574351079295.jpg"
+  }
+]

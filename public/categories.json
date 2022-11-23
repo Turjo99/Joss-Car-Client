@@ -1,0 +1,17 @@
+[
+  {
+    "categoryID": "01",
+    "categoryName": "Toyota",
+    "logo": "https://file.naijacarnews.com/2019/05/18/jxIDw0uA/av-toyota-logo-3d-model-current-toyota-logo-580e.jpg"
+  },
+  {
+    "categoryID": "02",
+    "categoryName": "Tesla",
+    "logo": "https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2020/06/1200/675/TESLA-LOGO.jpg?ve=1&tl=1"
+  },
+  {
+    "categoryID": "03",
+    "categoryName": "BMW",
+    "logo": "https://hypeandhyper.com/content/images/2022/06/BMW_White_Logo-1.png"
+  }
+]
