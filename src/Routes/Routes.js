@@ -1,5 +1,7 @@
+import { data } from "autoprefixer";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Components/Layout/Main";
+import Cars from "../Components/Pages/Cars/Cars";
 import Home from "../Components/Pages/Home/Home";
 
 export const router = createBrowserRouter([
@@ -10,6 +12,12 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/cars/:id",
+        element: <Cars></Cars>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allcars?categoryID=${params.id}`),
       },
     ],
   },

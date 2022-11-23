@@ -27,7 +27,7 @@ const ProductCategory = () => {
 
               <div className=" bg-gray-200 dark:bg-gray-700 text-center">
                 <button className="btn btn-primary ">
-                  <Link to={`${category.categoryID}`}>Browse more</Link>
+                  <Link to={`cars/${category.categoryID}`}>Browse more</Link>
                 </button>
               </div>
             </div>
