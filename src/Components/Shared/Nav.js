@@ -14,6 +14,9 @@ const Nav = () => {
         <Link to={"/"}>My Orders</Link>
       </li>
       <li>
+        <Link to={"/myproducts"}>My Products</Link>
+      </li>
+      <li>
         <Link to={"/addproduct"}>Add Product</Link>
       </li>
       {user?.email ? (

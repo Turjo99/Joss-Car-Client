@@ -6,6 +6,7 @@ import Main from "../Components/Layout/Main";
 import AddProduct from "../Components/Pages/Cars/AddProduct/AddProduct";
 import Cars from "../Components/Pages/Cars/Cars";
 import Home from "../Components/Pages/Home/Home";
+import MyProducts from "../Components/Pages/My Products/MyProducts";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "addproduct",
         element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "myproducts",
+        element: <MyProducts></MyProducts>,
       },
     ],
   },
