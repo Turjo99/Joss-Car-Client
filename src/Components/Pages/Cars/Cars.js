@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import CarBookingModal from "./CarBookingModal";
 
 const Cars = () => {
   const cars = useLoaderData();
+  const [carDetail, setCarDetail] = useState({});
   console.log(cars);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -20,12 +22,29 @@ const Cars = () => {
               {car.carName}
             </h3>
 
-            <div className=" bg-gray-200 dark:bg-gray-700 text-center">
+            <div className=" bg-gray-700 text-white text-center text ">
+              <p className="pt-3"> Original Price : {car.originalPrice} Lacs</p>
+              <p className="my-3 font-semibold">
+                {" "}
+                Selling Price <p className="text-3xl"> {car.sellPrice} Lacs</p>
+              </p>
+              <p>Condition : {car.condition}</p>
+              <div className="">
+                <p className=" text-xs my-3"> Added By : Omuk on 22-11-2022 </p>
+              </div>
+
               <button className="btn btn-primary ">
-                <Link to={`cars/`}>Book Now</Link>
+                <label
+                  htmlFor="car-booking-modal"
+                  className="btn"
+                  onClick={() => setCarDetail(car)}
+                >
+                  open modal
+                </label>
               </button>
             </div>
           </div>
+          <CarBookingModal carDetail={carDetail}></CarBookingModal>
         </div>
       ))}
     </div>
