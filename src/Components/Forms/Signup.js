@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Form } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
@@ -10,10 +11,31 @@ const Signup = () => {
 
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    const role = form.role.value;
+    console.log(email, password, role);
     createUser(email, password)
-      .then((data) => console.log(data))
+      .then((data) => {
+        saveUser(email, role);
+        toast("User Created Successfully");
+      })
       .then((err) => console.log(err));
+  };
+  const saveUser = (email, role) => {
+    const user = {
+      email: email,
+      role: role,
+    };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   return (
     <div className="my-10 container mx-auto">
@@ -35,19 +57,29 @@ const Signup = () => {
                     name="name"
                   />
                   <input
-                    className="block w-3/4 mx-auto  px-4 mt-4 py-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-500 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:ring-blue-300 focus:outline-none focus:ring"
+                    className="block w-3/4 mx-auto  px-4 mt-4 py-2"
                     type="email"
                     placeholder="Email address"
                     aria-label="Email address"
                     name="email"
                   />
                   <input
-                    className="block w-3/4 mx-auto  px-4 py-2 mt-4 text-gray-700 placeholder-gray-400 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-500 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:ring-blue-300 focus:outline-none focus:ring"
+                    className="block w-3/4 mx-auto  px-4 py-2 mt-4"
                     type="password"
                     placeholder="Password"
                     aria-label="Password"
                     name="password"
                   />
+                  <select
+                    name="role"
+                    className="select select-bordered w-3/4 mx-auto mt-4"
+                  >
+                    <option disabled selected>
+                      Join as
+                    </option>
+                    <option value={"buyer"}>Buyer</option>
+                    <option value={"seller"}>Seller</option>
+                  </select>
                 </div>
 
                 <div className="flex items-center  mt-4 justify-center">

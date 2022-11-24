@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/UserContext";
 
 const Nav = () => {
+  const { logout, user } = useContext(AuthContext);
+  const handleLogOut = () => [logout().then({}).catch({})];
   const menuItems = (
     <>
       <li>
@@ -10,12 +13,22 @@ const Nav = () => {
       <li>
         <Link to={"/"}>My Orders</Link>
       </li>
-      <li>
-        <Link to={"/"}>Login</Link>
-      </li>
-      <li>
-        <Link to={"/signup"}>SignUp</Link>
-      </li>
+      {user?.email ? (
+        <>
+          <li onClick={handleLogOut}>
+            <Link to={"/"}>Logout</Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to={"/login"}>Login</Link>
+          </li>
+          <li>
+            <Link to={"/signup"}>SignUp</Link>
+          </li>{" "}
+        </>
+      )}
     </>
   );
   return (
