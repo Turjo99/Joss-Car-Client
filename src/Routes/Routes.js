@@ -1,7 +1,9 @@
 import { data } from "autoprefixer";
 import { createBrowserRouter } from "react-router-dom";
+import Login from "../Components/Forms/Login";
 import Signup from "../Components/Forms/Signup";
 import Main from "../Components/Layout/Main";
+import AddProduct from "../Components/Pages/Cars/AddProduct/AddProduct";
 import Cars from "../Components/Pages/Cars/Cars";
 import Home from "../Components/Pages/Home/Home";
 
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "addproduct",
+        element: <AddProduct></AddProduct>,
       },
     ],
   },

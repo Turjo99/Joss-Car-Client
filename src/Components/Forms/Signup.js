@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Form } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
-
+import img from "../../imgs/signup.svg";
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
   const handleSignup = (event) => {
@@ -94,11 +94,7 @@ const Signup = () => {
 
         <div className="w-full h-64 lg:w-1/2 lg:h-full px-6 py-8 m-9">
           <div className="w-full h-full bg-cover">
-            <img
-              src="https://maserati.scene7.com/is/image/maserati/maserati/international/HomePage/Hero/models/LUX7417-1_desktop.jpg?$1920x2000$&fit=constrain"
-              alt=""
-              className="w-full h-96"
-            />
+            <img src={img} alt="" className="w-full h-96" />
           </div>
         </div>
       </div>
