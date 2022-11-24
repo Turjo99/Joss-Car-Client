@@ -1,8 +1,54 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../AddProduct/AddProduct.css";
 import { Form } from "react-router-dom";
+import { AuthContext } from "../../../../Context/UserContext";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
+  const { user } = useContext(AuthContext);
+  const handleAddProduct = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const product = form.productName.value;
+    const category = form.category.value;
+    const img = form.img.value;
+    const email = form.email.value;
+    const oPrice = form.originalPrice.value;
+    const sPrice = form.resellPrice.value;
+    const condition = form.condition.value;
+    const sellerName = form.sellerName.value;
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${day}-${month}-${year}`;
+    console.log(currentDate);
+    const productInfo = {
+      carName: product,
+      img: img,
+      categoryID: category,
+      email: email,
+      originalPrice: oPrice,
+      sellPrice: sPrice,
+      condition: condition,
+      sellerName: sellerName,
+      time: currentDate,
+    };
+    console.log(productInfo);
+    fetch("http://localhost:5000/allcars", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Product Added Successfully");
+      });
+    console.log(productInfo);
+  };
   return (
     <section class="min-h-screen bg-cover addproductbg">
       <div class="flex flex-col min-h-screen bg-black/60">
@@ -14,13 +60,25 @@ const AddProduct = () => {
                   Add Product Information
                 </h1>
 
-                <form class="mt-6">
+                <form onSubmit={handleAddProduct} class="mt-6">
                   <div class="flex-1">
                     <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                       Product Name
                     </label>
                     <input
                       type="text"
+                      name="productName"
+                      placeholder="Lancer EX"
+                      class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                    />
+                  </div>
+                  <div class="flex-1 mt-6">
+                    <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                      Product Image URL
+                    </label>
+                    <input
+                      type="text"
+                      name="img"
                       placeholder="Lancer EX"
                       class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                     />
@@ -29,7 +87,7 @@ const AddProduct = () => {
                     Product Category
                   </label>
                   <select
-                    name="role"
+                    name="category"
                     className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                   >
                     <option disabled selected>
@@ -46,6 +104,9 @@ const AddProduct = () => {
                     </label>
                     <input
                       type="email"
+                      name="email"
+                      defaultValue={user?.email}
+                      disabled
                       placeholder="johndoe@example.com"
                       class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                     />

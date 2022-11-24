@@ -30,7 +30,10 @@ const Cars = () => {
               </p>
               <p>Condition : {car.condition}</p>
               <div className="">
-                <p className=" text-xs my-3"> Added By : Omuk on 22-11-2022 </p>
+                <p className=" text-xs my-3">
+                  {" "}
+                  Added By : {car?.sellerName} on {car?.time}
+                </p>
               </div>
 
               <button className="btn btn-primary ">
