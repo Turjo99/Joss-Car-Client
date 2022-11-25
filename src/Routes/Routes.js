@@ -8,6 +8,7 @@ import Cars from "../Components/Pages/Cars/Cars";
 import Home from "../Components/Pages/Home/Home";
 import MyProducts from "../Components/Pages/My Products/MyProducts";
 import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "myproducts",
-        element: <MyProducts></MyProducts>,
+        element: (
+          <SellerRoute>
+            <MyProducts></MyProducts>
+          </SellerRoute>
+        ),
       },
     ],
   },
