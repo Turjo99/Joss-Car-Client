@@ -8,8 +8,9 @@ import AddProduct from "../Components/Pages/Cars/AddProduct/AddProduct";
 import Cars from "../Components/Pages/Cars/Cars";
 import AllBuyers from "../Components/Pages/Dashboard/AllBuyers";
 import AllSellers from "../Components/Pages/Dashboard/AllSellers";
+import MyProducts from "../Components/Pages/Dashboard/MyProducts";
 import Home from "../Components/Pages/Home/Home";
-import MyProducts from "../Components/Pages/My Products/MyProducts";
+
 import AdminRoute from "./AdminRoute";
 
 import SellerRoute from "./SellerRoute";
