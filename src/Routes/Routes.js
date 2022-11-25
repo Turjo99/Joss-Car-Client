@@ -2,12 +2,15 @@ import { data } from "autoprefixer";
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../Components/Forms/Login";
 import Signup from "../Components/Forms/Signup";
+import DashBoardLayout from "../Components/Layout/DashBoardLayout";
 import Main from "../Components/Layout/Main";
 import AddProduct from "../Components/Pages/Cars/AddProduct/AddProduct";
 import Cars from "../Components/Pages/Cars/Cars";
+import AllBuyers from "../Components/Pages/Dashboard/AllBuyers";
 import Home from "../Components/Pages/Home/Home";
 import MyProducts from "../Components/Pages/My Products/MyProducts";
 import AdminRoute from "./AdminRoute";
+import AllSellers from "./AllSellers";
 import SellerRoute from "./SellerRoute";
 
 export const router = createBrowserRouter([
@@ -33,21 +36,43 @@ export const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
+      // {
+      //   path: "addproduct",
+      //   element: (
+      //     <AdminRoute>
+      //       <AddProduct></AddProduct>
+      //     </AdminRoute>
+      //   ),
+      // },
+      // {
+      //   path: "myproducts",
+      //   element: (
+      //     <SellerRoute>
+      //       <MyProducts></MyProducts>
+      //     </SellerRoute>
+      //   ),
+      // },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashBoardLayout></DashBoardLayout>,
+    children: [
       {
-        path: "addproduct",
-        element: (
-          <AdminRoute>
-            <AddProduct></AddProduct>
-          </AdminRoute>
-        ),
+        path: "allbuyers",
+        element: <AllBuyers></AllBuyers>,
       },
       {
-        path: "myproducts",
-        element: (
-          <SellerRoute>
-            <MyProducts></MyProducts>
-          </SellerRoute>
-        ),
+        path: "myorders",
+        element: <MyProducts></MyProducts>,
+      },
+      {
+        path: "addproduct",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "allsellers",
+        element: <AllSellers></AllSellers>,
       },
     ],
   },
