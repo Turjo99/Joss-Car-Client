@@ -1,30 +1,35 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import img from "../../imgs/signup.svg";
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSignup = (event) => {
     event.preventDefault();
-    const form = event.target;
 
+    const form = event.target;
+    const userName = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const role = form.role.value;
     console.log(email, password, role);
     createUser(email, password)
       .then((data) => {
-        saveUser(email, role);
+        saveUser(email, role, userName);
         toast("User Created Successfully");
       })
       .then((err) => console.log(err));
   };
-  const saveUser = (email, role) => {
+  const saveUser = (email, role, userName) => {
     const user = {
+      name: userName,
       email: email,
       role: role,
+      isVerified: false,
     };
+    console.log(user);
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -35,6 +40,8 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        toast.success("User Successfully Created");
+        navigate("/");
       });
   };
   return (

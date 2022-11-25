@@ -8,7 +8,7 @@ const Cars = () => {
   console.log(cars);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {cars.map((car) => (
+      {cars?.map((car) => (
         <div
           key={car._id}
           className="flex flex-col items-center justify-center w-full max-w-sm mx-auto my-5"
@@ -29,6 +29,8 @@ const Cars = () => {
                 Selling Price <p className="text-3xl"> {car.sellPrice} Lacs</p>
               </p>
               <p>Condition : {car.condition}</p>
+              <p>Description : {car.description}</p>
+              <p>Used : {car.used} Year(s)</p>
               <div className="">
                 <p className=" text-xs my-3">
                   {" "}
