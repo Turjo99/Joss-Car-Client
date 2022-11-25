@@ -28,6 +28,18 @@ const MyProducts = () => {
         });
     }
   };
+  const handleAdvertise = (id) => {
+    fetch(`http://localhost:5000/allcars/advertise/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Product Sucessfully Advertise");
+          refetch();
+        }
+      });
+  };
   console.log(products);
 
   return (
@@ -63,8 +75,16 @@ const MyProducts = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-xs btn-danger">Advertise</button>
+                  {!product.isAdvertised && (
+                    <button
+                      className="btn btn-xs btn-danger"
+                      onClick={() => handleAdvertise(product._id)}
+                    >
+                      Advertise
+                    </button>
+                  )}
                 </td>
+                <td></td>
               </tr>
             ))}
           </tbody>
