@@ -37,8 +37,8 @@ const AddProduct = () => {
       condition: condition,
       sellerName: sellerName,
       time: currentDate,
-      isAvailable: true,
-      isAdvertised: false,
+      isAvailable: "yes",
+      isAdvertised: "no",
       isReported: "no",
     };
     console.log(productInfo);

@@ -75,7 +75,7 @@ const MyProducts = () => {
                   </button>
                 </td>
                 <td>
-                  {!product.isAdvertised && (
+                  {product.isAdvertised == "no" && (
                     <button
                       className="btn btn-xs btn-danger"
                       onClick={() => handleAdvertise(product._id)}
