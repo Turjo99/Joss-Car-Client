@@ -38,6 +38,8 @@ const AddProduct = () => {
       sellerName: sellerName,
       time: currentDate,
       isAvailable: true,
+      isAdvertised: false,
+      isReported: "no",
     };
     console.log(productInfo);
     fetch("http://localhost:5000/allcars", {

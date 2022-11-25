@@ -7,10 +7,11 @@ import Main from "../Components/Layout/Main";
 import AddProduct from "../Components/Pages/Cars/AddProduct/AddProduct";
 import Cars from "../Components/Pages/Cars/Cars";
 import AllBuyers from "../Components/Pages/Dashboard/AllBuyers";
+import AllSellers from "../Components/Pages/Dashboard/AllSellers";
 import Home from "../Components/Pages/Home/Home";
 import MyProducts from "../Components/Pages/My Products/MyProducts";
 import AdminRoute from "./AdminRoute";
-import AllSellers from "./AllSellers";
+
 import SellerRoute from "./SellerRoute";
 
 export const router = createBrowserRouter([

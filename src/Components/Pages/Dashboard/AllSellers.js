@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { AuthContext } from "../Context/UserContext";
+import { AuthContext } from "../../../Context/UserContext";
 
 const AllSellers = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +13,21 @@ const AllSellers = () => {
         res.json()
       ),
   });
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Do you want to delete this seller?");
+    if (proceed) {
+      fetch(`http://localhost:5000/users/delete/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            toast.success("Seller Deleted Successfully");
+            refetch();
+          }
+        });
+    }
+  };
   const handleverify = (id) => {
     fetch(`http://localhost:5000/users/verify/${id}`, {
       method: "PUT",
@@ -24,7 +39,6 @@ const AllSellers = () => {
           refetch();
         }
       });
-    console.log(users);
   };
   return (
     <div>
@@ -57,7 +71,12 @@ const AllSellers = () => {
                   )}
                 </td>
                 <td>
-                  <button className="btn btn-xs btn-danger">Delete</button>
+                  <button
+                    onClick={() => handleDelete(user._id)}
+                    className="btn btn-xs btn-danger"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
