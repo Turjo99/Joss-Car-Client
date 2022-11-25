@@ -10,7 +10,7 @@ const DashBoardLayout = () => {
   const [isAdmin] = useAdmin(user?.email);
   console.log(isAdmin);
   return (
-    <div className="">
+    <div className=" max-w-[1440px] mx-auto">
       <Nav></Nav>
       <div className="drawer drawer-mobile drawer-end">
         <input
@@ -25,7 +25,7 @@ const DashBoardLayout = () => {
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             <li className="bg-primary my-5 text-white">
-              <Link to="myorders">My Orders</Link>
+              <Link to="/dashboard">My Orders</Link>
             </li>
             {isAdmin && (
               <>
