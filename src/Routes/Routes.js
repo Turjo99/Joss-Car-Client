@@ -10,6 +10,7 @@ import AllBuyers from "../Components/Pages/Dashboard/AllBuyers";
 import AllSellers from "../Components/Pages/Dashboard/AllSellers";
 import MyProducts from "../Components/Pages/Dashboard/MyProducts";
 import ReportedProduct from "../Components/Pages/Dashboard/ReportedProduct";
+import ErrorPage from "../Components/Pages/ErrorPage";
 import Blogs from "../Components/Pages/Home/Blogs";
 import Home from "../Components/Pages/Home/Home";
 
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       //   ),
       // },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
   {
     path: "/dashboard",
