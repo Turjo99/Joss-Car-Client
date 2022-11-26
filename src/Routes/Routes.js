@@ -8,6 +8,7 @@ import AddProduct from "../Components/Pages/Cars/AddProduct/AddProduct";
 import Cars from "../Components/Pages/Cars/Cars";
 import AllBuyers from "../Components/Pages/Dashboard/AllBuyers";
 import AllSellers from "../Components/Pages/Dashboard/AllSellers";
+import MyBooking from "../Components/Pages/Dashboard/MyBooking";
 import MyProducts from "../Components/Pages/Dashboard/MyProducts";
 import ReportedProduct from "../Components/Pages/Dashboard/ReportedProduct";
 import ErrorPage from "../Components/Pages/ErrorPage";
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
       {
         path: "allsellers",
         element: <AllSellers></AllSellers>,
+      },
+      {
+        path: "mybooking",
+        element: <MyBooking></MyBooking>,
       },
       {
         path: "reported",

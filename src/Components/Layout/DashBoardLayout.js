@@ -36,7 +36,7 @@ const DashBoardLayout = () => {
                 <Link to="allsellers">All Sellers</Link>
               </li>
               <li className=" bg-amber-500 my-5 text-white">
-                <Link to="myproducts">My Orders</Link>
+                <Link to="mybooking">My Bookings</Link>
               </li>
               <li className=" bg-red-900 my-5 text-white">
                 <Link to="addproduct"> Add Products</Link>
