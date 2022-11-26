@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
 
 const MyBooking = () => {
@@ -41,7 +42,7 @@ const MyBooking = () => {
                   <>
                     <td>
                       <span className="p-3 rounded-md bg-green-600  text-white font-semibold">
-                        Pay
+                        <Link to={`payment/${booking._id}`}>Pay </Link>
                       </span>
                     </td>
                   </>
@@ -60,6 +61,11 @@ const MyBooking = () => {
                   </>
                 ) : (
                   <>
+                    {" "}
+                    {
+                      // soldto==booking.email && {
+                      // }
+                    }
                     <td>
                       <span className="p-3 rounded-md  bg-red-200 text-red-700">
                         Not Available

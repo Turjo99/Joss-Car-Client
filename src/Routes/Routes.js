@@ -10,6 +10,7 @@ import AllBuyers from "../Components/Pages/Dashboard/AllBuyers";
 import AllSellers from "../Components/Pages/Dashboard/AllSellers";
 import MyBooking from "../Components/Pages/Dashboard/MyBooking";
 import MyProducts from "../Components/Pages/Dashboard/MyProducts";
+import Payment from "../Components/Pages/Dashboard/Payment";
 import ReportedProduct from "../Components/Pages/Dashboard/ReportedProduct";
 import ErrorPage from "../Components/Pages/ErrorPage";
 import Blogs from "../Components/Pages/Home/Blogs";
@@ -95,6 +96,12 @@ export const router = createBrowserRouter([
       {
         path: "mybooking",
         element: <MyBooking></MyBooking>,
+      },
+      {
+        path: `mybooking/payment/:id`,
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/booking/payment/${params.id}`),
       },
       {
         path: "reported",
