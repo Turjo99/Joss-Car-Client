@@ -4,7 +4,8 @@ import { AuthContext } from "../../../Context/UserContext";
 
 const CarBookingModal = ({ carDetail }) => {
   const { user } = useContext(AuthContext);
-  const { carName, sellPrice } = carDetail;
+  const { carName, sellPrice, _id } = carDetail;
+  console.log(carDetail);
   const handleBooking = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,6 +22,7 @@ const CarBookingModal = ({ carDetail }) => {
       phone: phone,
       location: location,
       isAvailable: "yes",
+      productID: _id,
     };
     fetch("http://localhost:5000/bookings", {
       method: "POST",

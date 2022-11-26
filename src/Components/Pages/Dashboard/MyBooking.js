@@ -9,7 +9,7 @@ const MyBooking = () => {
   const { data: bookings = [], refetch } = useQuery({
     queryKey: ["bookings"],
     queryFn: () =>
-      fetch(`http://localhost:5000/booking?email=ambani@buy.com`).then((res) =>
+      fetch(`http://localhost:5000/booking?email=${user.email}`).then((res) =>
         res.json()
       ),
   });
