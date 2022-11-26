@@ -5,7 +5,7 @@ import Nav from "../Shared/Nav";
 
 const Main = () => {
   return (
-    <div>
+    <div className=" max-w-[1440px] mx-auto">
       <Nav></Nav>
       <Outlet></Outlet>
       <Footer></Footer>

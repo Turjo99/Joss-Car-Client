@@ -9,6 +9,7 @@ import Cars from "../Components/Pages/Cars/Cars";
 import AllBuyers from "../Components/Pages/Dashboard/AllBuyers";
 import AllSellers from "../Components/Pages/Dashboard/AllSellers";
 import MyProducts from "../Components/Pages/Dashboard/MyProducts";
+import Blogs from "../Components/Pages/Home/Blogs";
 import Home from "../Components/Pages/Home/Home";
 
 import AdminRoute from "./AdminRoute";
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
       // {
       //   path: "addproduct",
