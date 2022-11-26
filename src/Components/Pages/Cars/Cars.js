@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import CarBookingModal from "./CarBookingModal";
 
@@ -6,6 +7,20 @@ const Cars = () => {
   const cars = useLoaderData();
   const [carDetail, setCarDetail] = useState({});
   console.log(cars);
+  const handleReport = (id) => {
+    const proceed = window.confirm("Do you want report this item");
+    if (proceed) {
+      fetch(`http://localhost:5000/allcars/report/${id}`, {
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount > 0) {
+            toast.error("Product Reported To Admin");
+          }
+        });
+    }
+  };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {cars?.map((car) => (
@@ -38,15 +53,19 @@ const Cars = () => {
                 </p>
               </div>
 
-              <button className="btn btn-primary ">
-                <label
-                  htmlFor="car-booking-modal"
-                  className="btn"
-                  onClick={() => setCarDetail(car)}
-                >
-                  open modal
-                </label>
-              </button>
+              <div className="flex justify-between p-3">
+                <button className="btn btn-sm btn-primary h-full">
+                  <label
+                    htmlFor="car-booking-modal"
+                    onClick={() => setCarDetail(car)}
+                  >
+                    Book Now
+                  </label>
+                </button>
+                <button className="btn btn-sm bg-red-500 text-white h-full">
+                  <label onClick={() => handleReport(car._id)}>Report</label>
+                </button>
+              </div>
             </div>
           </div>
           <CarBookingModal carDetail={carDetail}></CarBookingModal>

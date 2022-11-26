@@ -9,6 +9,7 @@ import Cars from "../Components/Pages/Cars/Cars";
 import AllBuyers from "../Components/Pages/Dashboard/AllBuyers";
 import AllSellers from "../Components/Pages/Dashboard/AllSellers";
 import MyProducts from "../Components/Pages/Dashboard/MyProducts";
+import ReportedProduct from "../Components/Pages/Dashboard/ReportedProduct";
 import Blogs from "../Components/Pages/Home/Blogs";
 import Home from "../Components/Pages/Home/Home";
 
@@ -84,6 +85,10 @@ export const router = createBrowserRouter([
       {
         path: "allsellers",
         element: <AllSellers></AllSellers>,
+      },
+      {
+        path: "reported",
+        element: <ReportedProduct></ReportedProduct>,
       },
     ],
   },

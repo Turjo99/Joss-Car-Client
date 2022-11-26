@@ -20,6 +20,7 @@ const CarBookingModal = ({ carDetail }) => {
       price: price,
       phone: phone,
       location: location,
+      isAvailable: "yes",
     };
     fetch("http://localhost:5000/bookings", {
       method: "POST",

@@ -55,7 +55,7 @@ const AdvertisedProduct = () => {
                     className="btn"
                     onClick={() => setCarDetail(car)}
                   >
-                    open modal
+                    Book Now
                   </label>
                 </button>
               </div>

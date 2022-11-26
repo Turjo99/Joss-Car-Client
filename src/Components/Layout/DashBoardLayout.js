@@ -41,6 +41,9 @@ const DashBoardLayout = () => {
               <li className=" bg-red-900 my-5 text-white">
                 <Link to="addproduct"> Add Products</Link>
               </li>
+              <li className=" bg-teal-700 my-5 text-white">
+                <Link to="reported"> Reported Products</Link>
+              </li>
             </>
             {/* )} */}
           </ul>
