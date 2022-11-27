@@ -17,6 +17,7 @@ import Blogs from "../Components/Pages/Home/Blogs";
 import Home from "../Components/Pages/Home/Home";
 
 import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 
 import SellerRoute from "./SellerRoute";
 
@@ -31,7 +32,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/cars/:id",
-        element: <Cars></Cars>,
+        element: (
+          <PrivateRoute>
+            <Cars></Cars>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allcars?categoryID=${params.id}`),
       },
@@ -75,11 +80,19 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "myproducts",
-        element: <MyProducts></MyProducts>,
+        element: (
+          <SellerRoute>
+            <MyProducts></MyProducts>
+          </SellerRoute>
+        ),
       },
       {
         path: "allbuyers",
-        element: <AllBuyers></AllBuyers>,
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
       },
       {
         path: "myorders",
@@ -87,11 +100,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "addproduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <SellerRoute>
+            <AddProduct></AddProduct>
+          </SellerRoute>
+        ),
       },
       {
         path: "allsellers",
-        element: <AllSellers></AllSellers>,
+        element: (
+          <AdminRoute>
+            <AllSellers></AllSellers>
+          </AdminRoute>
+        ),
       },
       {
         path: "mybooking",

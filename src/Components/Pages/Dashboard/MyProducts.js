@@ -70,25 +70,26 @@ const MyProducts = () => {
                 <td>
                   <button
                     onClick={() => handleDelete(product._id)}
-                    className="btn btn-xs btn-danger"
+                    className="btn btn-xs bg-red-600 text-white"
                   >
                     Delete
                   </button>
                 </td>
                 <td>
-                  {product.isAdvertised == "no" && product.isAvailable && (
-                    <button
-                      className="btn btn-xs btn-danger"
-                      onClick={() => handleAdvertise(product._id)}
-                    >
-                      Advertise
-                    </button>
-                  )}
+                  {product.isAdvertised == "no" &&
+                    product.isAvailable == "yes" && (
+                      <button
+                        className="btn btn-xs btn-danger"
+                        onClick={() => handleAdvertise(product._id)}
+                      >
+                        Advertise
+                      </button>
+                    )}
                 </td>
                 <td>
                   {product.isAvailable == "no" ? (
                     <>
-                      <span className=" bg-green-700 text-white">Sold</span>
+                      <span className=" bg-green-700 text-white p-2">Sold</span>
                     </>
                   ) : (
                     <>

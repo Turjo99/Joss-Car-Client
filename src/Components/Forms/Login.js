@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import img from "../../imgs/signup.svg";
 const Login = () => {
   const { signInUser, user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handlelogin = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -13,6 +16,7 @@ const Login = () => {
       .then((data) => {
         console.log(data);
         toast.success("Login Successfull");
+        navigate(from, { replace: true });
       })
       .catch((err) => console.error(err));
   };
