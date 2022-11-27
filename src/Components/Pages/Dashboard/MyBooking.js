@@ -6,12 +6,33 @@ import { AuthContext } from "../../../Context/UserContext";
 const MyBooking = () => {
   const { user } = useContext(AuthContext);
   console.log(user?.email);
-  const { data: bookings = [], refetch } = useQuery({
+  // const { data: bookings = [], refetch } = useQuery({
+  //   queryKey: ["bookings"],
+  //   queryFn: () =>
+  //     fetch(`http://localhost:5000/booking?email=${user.email}`).then((res) =>
+  //       res.json()
+  //     ),
+  // });
+  const {
+    data: bookings,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["bookings"],
-    queryFn: () =>
-      fetch(`http://localhost:5000/booking?email=${user.email}`).then((res) =>
-        res.json()
-      ),
+    queryFn: async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:5000/booking?email=${user.email}`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
+        const data = await res.json();
+        return data;
+      } catch (error) {}
+    },
   });
   console.log(bookings);
   return (
@@ -31,7 +52,7 @@ const MyBooking = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking, i) => (
+            {bookings?.map((booking, i) => (
               <tr key={booking._id}>
                 <th>{i + 1}</th>
                 <td>{booking.product}</td>

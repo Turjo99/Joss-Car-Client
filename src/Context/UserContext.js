@@ -31,6 +31,7 @@ const UserContext = ({ children }) => {
   };
   const logout = () => {
     setLoading(true);
+    localStorage.clear();
     return signOut(auth);
   };
   useEffect(() => {

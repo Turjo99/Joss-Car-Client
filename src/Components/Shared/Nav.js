@@ -68,7 +68,9 @@ const Nav = () => {
             {menuItems}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Joss Cars</a>
+        <Link to={"/"} className="btn btn-ghost normal-case text-xl">
+          Joss Cars
+        </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>

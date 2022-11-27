@@ -1,22 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import useToken from "../../Hooks/useToken";
 import img from "../../imgs/signup.svg";
 const Login = () => {
   const { signInUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  // console.log(loginUserEmail);
+  const [token] = useToken(loginUserEmail);
+  if (token) {
+    navigate(from, { replace: true });
+    // console.log(token);
+  }
   const handlelogin = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
     signInUser(email, password)
       .then((data) => {
-        console.log(data);
+        console.log(data.user.email);
         toast.success("Login Successfull");
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
+        setLoginUserEmail(data.user.email);
       })
       .catch((err) => console.error(err));
   };
