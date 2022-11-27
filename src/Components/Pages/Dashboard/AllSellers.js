@@ -8,11 +8,22 @@ const AllSellers = () => {
   console.log(user?.email);
   const { data: users = [], refetch } = useQuery({
     queryKey: ["sellerProducts"],
-    queryFn: () =>
-      fetch(`http://localhost:5000/allsellers?role=seller`).then((res) =>
-        res.json()
-      ),
+    queryFn: async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:5000/allsellers?role=seller`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
+        const data = await res.json();
+        return data;
+      } catch (error) {}
+    },
   });
+
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to delete this seller?");
     if (proceed) {

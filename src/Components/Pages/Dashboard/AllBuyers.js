@@ -8,10 +8,17 @@ const AllBuyers = () => {
   console.log(user?.email);
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
-    queryFn: () =>
-      fetch(`http://localhost:5000/allsellers?role=buyer`).then((res) =>
-        res.json()
-      ),
+    queryFn: async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/allsellers?role=buyer`, {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
+        const data = await res.json();
+        return data;
+      } catch (error) {}
+    },
   });
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to Delete this buyer?");

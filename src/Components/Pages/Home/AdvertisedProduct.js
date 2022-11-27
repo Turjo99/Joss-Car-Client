@@ -6,11 +6,22 @@ const AdvertisedProduct = () => {
   const [carDetail, setCarDetail] = useState({});
   const { data: cars = [], refetch } = useQuery({
     queryKey: ["cars"],
-    queryFn: () =>
-      fetch(
-        `http://localhost:5000/advertised?isAdvertised=yes&isAvailable=yes`
-      ).then((res) => res.json()),
+    queryFn: async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:5000/advertised?isAdvertised=yes&isAvailable=yes`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
+        const data = await res.json();
+        return data;
+      } catch (error) {}
+    },
   });
+
   console.log(cars);
   return (
     <div className="my-10">

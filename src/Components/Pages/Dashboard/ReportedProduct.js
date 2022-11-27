@@ -7,7 +7,7 @@ const ReportedProduct = () => {
     queryKey: ["products"],
     queryFn: () =>
       fetch(
-        `http://localhost:5000/allsellers/reportedproduct?isReported=yes`
+        `http://localhost:5000/allsellers/reportedproduct?isReported=yes&isAvailable=yes`
       ).then((res) => res.json()),
   });
   const handleDelete = (id) => {
