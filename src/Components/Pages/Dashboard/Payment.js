@@ -7,8 +7,8 @@ import Checkout from "./Checkout";
 const Payment = () => {
   const data = useLoaderData();
   console.log(data);
-  const { price, product, name, email, _id } = data[0];
-  console.log(price);
+  const { price, product, name, email, _id, productID } = data[0];
+  console.log(productID);
   const stripePromise = loadStripe(
     `pk_test_51M6PqYC7ChjMGzPDxhKymmYLy7a3ETzYI4sYS9zBr3ZvTQGQnjrrkdoj8iz0vhTdzMtWxPlfAFZA9WR2zrHnNAWR00DtBHQuL6`
   );
@@ -24,7 +24,13 @@ const Payment = () => {
       </p>
       <div className="">
         <Elements stripe={stripePromise}>
-          <Checkout price={price} name={name} email={email} _id={_id} />
+          <Checkout
+            price={price}
+            name={name}
+            email={email}
+            _id={_id}
+            productID={productID}
+          />
         </Elements>
       </div>
     </div>

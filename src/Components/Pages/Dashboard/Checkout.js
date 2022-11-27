@@ -2,7 +2,7 @@ import { async } from "@firebase/util";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 
-const Checkout = ({ price, name, email, _id }) => {
+const Checkout = ({ price, name, email, _id, productID }) => {
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
@@ -10,7 +10,7 @@ const Checkout = ({ price, name, email, _id }) => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  console.log(price, name, email);
+  console.log(price, name, email, _id, productID);
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch("http://localhost:5000/create-payment-intent", {
@@ -64,9 +64,10 @@ const Checkout = ({ price, name, email, _id }) => {
         transactionId: paymentIntent.id,
         email,
         bookingId: _id,
+        productID: productID,
       };
       fetch("http://localhost:5000/payments", {
-        method: "POST",
+        method: "PUT",
         headers: {
           "content-type": "application/json",
         },

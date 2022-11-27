@@ -48,7 +48,12 @@ const MyBooking = () => {
                   </>
                 ) : (
                   <>
-                    <td></td>
+                    {booking.soldTo == booking.email && (
+                      <span className=" text-green-700 font-bold relative left-5 top-3">
+                        Paid
+                      </span>
+                    )}
+                    {booking.soldTo !== booking.email && <span></span>}
                   </>
                 )}
                 {booking.isAvailable == "yes" ? (
@@ -61,11 +66,6 @@ const MyBooking = () => {
                   </>
                 ) : (
                   <>
-                    {" "}
-                    {
-                      // soldto==booking.email && {
-                      // }
-                    }
                     <td>
                       <span className="p-3 rounded-md  bg-red-200 text-red-700">
                         Not Available

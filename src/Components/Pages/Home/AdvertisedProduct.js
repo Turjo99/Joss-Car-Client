@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import CarBookingModal from "../Cars/CarBookingModal";
+import { data } from "autoprefixer";
 const AdvertisedProduct = () => {
   const [carDetail, setCarDetail] = useState({});
   const { data: cars = [], refetch } = useQuery({
@@ -13,7 +14,11 @@ const AdvertisedProduct = () => {
   console.log(cars);
   return (
     <div className="my-10">
+      {data.length === 0 && (
+        <h3 className="text-center text-2xl">No Advertised Product</h3>
+      )}
       <h3 className="text-5xl font-bold text-center">Advertised Products</h3>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {cars?.map((car) => (
           <div
@@ -49,7 +54,7 @@ const AdvertisedProduct = () => {
                   </p>
                 </div>
 
-                <button className="btn btn-primary ">
+                <button className=" ">
                   <label
                     htmlFor="car-booking-modal"
                     className="btn"

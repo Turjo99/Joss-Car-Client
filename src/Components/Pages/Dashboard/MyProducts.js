@@ -35,7 +35,7 @@ const MyProducts = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          toast.success("Product Sucessfully Advertise");
+          toast.success("Product Sucessfully Advertised");
           refetch();
         }
       });
@@ -56,6 +56,7 @@ const MyProducts = () => {
 
               <th>Delete</th>
               <th>Advertise</th>
+              <th>Avaibility</th>
             </tr>
           </thead>
           <tbody>
@@ -75,13 +76,26 @@ const MyProducts = () => {
                   </button>
                 </td>
                 <td>
-                  {product.isAdvertised == "no" && (
+                  {product.isAdvertised == "no" && product.isAvailable && (
                     <button
                       className="btn btn-xs btn-danger"
                       onClick={() => handleAdvertise(product._id)}
                     >
                       Advertise
                     </button>
+                  )}
+                </td>
+                <td>
+                  {product.isAvailable == "no" ? (
+                    <>
+                      <span className=" bg-green-700 text-white">Sold</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className=" bg-blue-200 text-blue-900 p-2 rounded">
+                        Available
+                      </span>
+                    </>
                   )}
                 </td>
                 <td></td>
