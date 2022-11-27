@@ -8,7 +8,7 @@ const CarCard = ({ car, handleReport, setCarDetail, sellerEmail }) => {
   const [user, setUser] = useState({});
   // useEffect
   useEffect(() => {
-    fetch(`http://localhost:5000/seller?email=${car.email}`)
+    fetch(`http://localhost:5000/users?email=${car.email}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
@@ -37,12 +37,16 @@ const CarCard = ({ car, handleReport, setCarDetail, sellerEmail }) => {
           </h3>
 
           <div className=" bg-gray-700 text-white text-center text ">
-            {verified && (
+            {verified ? (
               <>
                 <span className=" flex items-center bg-slate-600 justify-center">
                   <FaCheckCircle className=" text-blue-500" />{" "}
                   <span className="ml-3">Verified Seller</span>
                 </span>
+              </>
+            ) : (
+              <>
+                <p></p>
               </>
             )}
 

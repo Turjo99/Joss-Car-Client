@@ -52,7 +52,7 @@ const DashBoardLayout = () => {
             <>
               {!isAdmin && !isSeller && (
                 <li className=" bg-amber-500 my-5 text-white">
-                  <Link to="mybooking">My Bookings</Link>
+                  <Link to="mybooking">My Orders</Link>
                 </li>
               )}
             </>

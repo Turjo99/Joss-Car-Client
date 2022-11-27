@@ -1,10 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Nav = () => {
   const { logout, user } = useContext(AuthContext);
-  const handleLogOut = () => [logout().then({}).catch({})];
+  const [name, setName] = useState(null);
+  const handleLogOut = () => {
+    logout().then({}).catch({});
+  };
+  useEffect(() => {
+    fetch(`http://localhost:5000/users?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setName(data[0].name));
+  }, [user?.email]);
+  // console.log(name);
   const menuItems = (
     <>
       <li>
@@ -20,13 +29,14 @@ const Nav = () => {
       <li>
         <Link to={"/dashboard"}>Dashboard</Link>
       </li>
-      <li>
-        <Link to={"/addproduct"}>Add Product</Link>
-      </li>
+
       {user?.email ? (
         <>
           <li onClick={handleLogOut}>
             <Link to={"/"}>Logout</Link>
+          </li>
+          <li>
+            <Link>{name}</Link>
           </li>
         </>
       ) : (

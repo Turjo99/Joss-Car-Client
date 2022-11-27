@@ -116,7 +116,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "mybooking",
-        element: <MyBooking></MyBooking>,
+        element: (
+          <PrivateRoute>
+            <MyBooking></MyBooking>
+          </PrivateRoute>
+        ),
       },
       {
         path: `mybooking/payment/:id`,

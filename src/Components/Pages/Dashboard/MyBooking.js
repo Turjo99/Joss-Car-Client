@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/UserContext";
+import Loading from "../../Shared/Loading/Loading";
 
 const MyBooking = () => {
   const { user } = useContext(AuthContext);
@@ -34,10 +35,13 @@ const MyBooking = () => {
       } catch (error) {}
     },
   });
+  if (isLoading) {
+    <Loading></Loading>;
+  }
   console.log(bookings);
   return (
     <div>
-      <h2 className="text-3xl">My Bookings</h2>
+      <h2 className="text-3xl text-center font-bold my-10">My Orders</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

@@ -1,14 +1,29 @@
-import React, { useContext } from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Form, useNavigate } from "react-router-dom";
+import { Form, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import useToken from "../../Hooks/useToken";
 import img from "../../imgs/signup.svg";
+const Provider = new GoogleAuthProvider();
 const Signup = () => {
-  const { createUser } = useContext(AuthContext);
+  const [signUserEmail, setsignUserEmail] = useState("");
+  console.log(signUserEmail);
+  const [loginError, setLoginError] = useState("");
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  const [token] = useToken(signUserEmail);
+  console.log(signUserEmail);
+  if (token) {
+    navigate("/");
+  }
+  const { createUser, googleSignIn, updateUser } = useContext(AuthContext);
+
   const handleSignup = (event) => {
     event.preventDefault();
-
+    // form.reset();
+    // form.reset();
     const form = event.target;
     const userName = form.name.value;
     const email = form.email.value;
@@ -19,6 +34,8 @@ const Signup = () => {
       .then((data) => {
         saveUser(email, role, userName);
         toast("User Created Successfully");
+        setsignUserEmail(data.user.email);
+        console.log(data.user.email);
       })
       .then((err) => console.log(err));
   };
@@ -41,14 +58,55 @@ const Signup = () => {
       .then((data) => {
         console.log(data);
         toast.success("User Successfully Created");
-        navigate("/");
+        // navigate("/");
       });
+  };
+  const savegoogleUser = (email, userName) => {
+    const user = {
+      name: userName,
+      email: email,
+      role: "buyer",
+      isVerified: false,
+    };
+    console.log(user);
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("User Successfully Logged In");
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data.user.email),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            // local storage is the easiest but not the best place to store jwt token
+            localStorage.setItem("accessToken", data.token);
+          });
+      });
+  };
+  const handlegoogleSignin = () => {
+    googleSignIn().then((data) => {
+      savegoogleUser(data.user.email, data.user.displayName);
+      setsignUserEmail(data.user.email);
+    });
   };
   return (
     <div className="my-10 container mx-auto">
       <div className="lg:flex">
         <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
-          <div className=" w-3/4 h-96 bg-white rounded-lg dark:bg-gray-800">
+          <div className=" w-3/4 h-fit bg-white rounded-lg dark:bg-gray-800">
             <div className="p-5 text-center">
               <h2 className="text-2xl font-semibold text-gray-700 dark:text-white fo">
                 Sign In
@@ -62,6 +120,7 @@ const Signup = () => {
                     placeholder="Name"
                     aria-label="Name"
                     name="name"
+                    required
                   />
                   <input
                     className="block w-3/4 mx-auto  px-4 mt-4 py-2"
@@ -69,6 +128,7 @@ const Signup = () => {
                     placeholder="Email address"
                     aria-label="Email address"
                     name="email"
+                    required
                   />
                   <input
                     className="block w-3/4 mx-auto  px-4 py-2 mt-4"
@@ -81,7 +141,7 @@ const Signup = () => {
                     name="role"
                     className="select select-bordered w-3/4 mx-auto mt-4"
                   >
-                    <option disabled selected>
+                    <option disabled selected required>
                       Join as
                     </option>
                     <option value={"buyer"}>Buyer</option>
@@ -95,6 +155,12 @@ const Signup = () => {
                   </button>
                 </div>
               </Form>
+              <button
+                className="btn btn-secondary mt-5"
+                onClick={handlegoogleSignin}
+              >
+                Sign In With Google
+              </button>
             </div>
           </div>
         </div>
