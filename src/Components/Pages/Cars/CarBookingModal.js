@@ -72,6 +72,7 @@ const CarBookingModal = ({ carDetail }) => {
               className="input w-full input-bordered"
               defaultValue={user?.email}
               disabled
+              required
             />
 
             <input
@@ -80,6 +81,7 @@ const CarBookingModal = ({ carDetail }) => {
               name="price"
               value={sellPrice}
               className="input w-full input-bordered "
+              required
             />
 
             <input
@@ -87,12 +89,14 @@ const CarBookingModal = ({ carDetail }) => {
               type="text"
               placeholder="Phone Number"
               className="input w-full input-bordered"
+              required
             />
             <input
               name="location"
               type="text"
               placeholder="Meet Up Location"
               className="input w-full input-bordered"
+              required
             />
             <br />
             <input

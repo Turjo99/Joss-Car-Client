@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const Checkout = ({ price, name, email, _id, productID }) => {
   const [cardError, setCardError] = useState("");
@@ -79,6 +80,7 @@ const Checkout = ({ price, name, email, _id, productID }) => {
           if (data.insertedId) {
             setSuccess("Congrats! your payment completed");
             setTransactionId(paymentIntent.id);
+            toast.success("Payment Sucessfull");
           }
         });
     }
@@ -103,9 +105,15 @@ const Checkout = ({ price, name, email, _id, productID }) => {
             },
           }}
         />
-        <button type="submit" disabled={!stripe || !clientSecret}>
-          Pay
-        </button>
+        <div className="text-center my-5">
+          <button
+            type="submit"
+            className="btn-primary btn text-center"
+            disabled={!stripe || !clientSecret}
+          >
+            Pay
+          </button>
+        </div>
       </form>
       <p className="text-red-500">{cardError}</p>
       {success && (
