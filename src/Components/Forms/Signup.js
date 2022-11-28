@@ -5,9 +5,9 @@ import { Form, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import useToken from "../../Hooks/useToken";
 import img from "../../imgs/signup.svg";
-const Provider = new GoogleAuthProvider();
+
 const Signup = () => {
-  const [signUserEmail, setsignUserEmail] = useState("");
+  const [signUserEmail, setsignUserEmail] = useState(null);
   console.log(signUserEmail);
   const [loginError, setLoginError] = useState("");
   const location = useLocation();
@@ -29,13 +29,22 @@ const Signup = () => {
     const email = form.email.value;
     const password = form.password.value;
     const role = form.role.value;
-    console.log(email, password, role);
+    // console.log(email, password, role);
     createUser(email, password)
       .then((data) => {
-        saveUser(email, role, userName);
-        toast("User Created Successfully");
-        setsignUserEmail(data.user.email);
-        console.log(data.user.email);
+        // saveUser(email, role, userName);
+        const user = data.user;
+        console.log(user);
+
+        const userInfo = {
+          displayName: userName,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            saveUser(email, role, userName);
+            // setsignUserEmail(email);
+          })
+          .catch((err) => console.log(err));
       })
       .then((err) => console.log(err));
   };
@@ -46,7 +55,7 @@ const Signup = () => {
       role: role,
       isVerified: false,
     };
-    console.log(user);
+    // console.log(user);
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -56,7 +65,7 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setsignUserEmail(email);
         toast.success("User Successfully Created");
         // navigate("/");
       });
@@ -68,7 +77,7 @@ const Signup = () => {
       role: "buyer",
       isVerified: false,
     };
-    console.log(user);
+    // console.log(user);
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -78,7 +87,7 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         toast.success("User Successfully Logged In");
         fetch("http://localhost:5000/jwt", {
           method: "POST",
@@ -89,7 +98,7 @@ const Signup = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
 
             // local storage is the easiest but not the best place to store jwt token
             localStorage.setItem("accessToken", data.token);

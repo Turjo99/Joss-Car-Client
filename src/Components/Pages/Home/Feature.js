@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Feature = () => {
   return (
@@ -27,12 +28,9 @@ const Feature = () => {
             <h2 className="text-3xl font-semibold leading-none">
               Get the best premium cars only at Joss Cars
             </h2>
-            <p className="mt-4 mb-8 text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-              voluptatum rem amet!
-            </p>
-            <button className="self-start px-10 py-3 text-lg font-medium rounded-3xl dark:bg-violet-400 dark:text-gray-900">
-              Get started
+
+            <button className="self-start px-10 py-3 my-10 text-lg font-medium rounded-3xl dark:bg-violet-400 dark:text-gray-900">
+              <Link to={"/"}>Get started</Link>
             </button>
           </div>
         </div>
