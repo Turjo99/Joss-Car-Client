@@ -42,7 +42,7 @@ const AddProduct = () => {
       isReported: "no",
     };
     console.log(productInfo);
-    fetch("http://localhost:5000/allcars", {
+    fetch("https://y-xi-khaki.vercel.app/allcars", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,7 +58,7 @@ const AddProduct = () => {
   };
   return (
     <section className="min-h-screen bg-cover addproductbg ">
-      <div className="flex flex-col min-h-screen bg-black/60">
+      <div className="flex flex-col min-h-screen bg-black/30">
         <div className="container flex flex-col flex-1 px-6 py-12 mx-auto">
           <div className="flex-1 lg:flex lg:items-center justify-center lg:-mx-6">
             <div className="mt-8 lg:w-1/2 lg:mx-6">
@@ -75,6 +75,7 @@ const AddProduct = () => {
                       </label>
                       <input
                         type="text"
+                        required
                         name="productName"
                         placeholder="Lancer EX"
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -86,8 +87,8 @@ const AddProduct = () => {
                       </label>
                       <input
                         type="text"
+                        required
                         name="img"
-                        placeholder="Lancer EX"
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -97,6 +98,7 @@ const AddProduct = () => {
                       </label>
                       <select
                         name="category"
+                        required
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       >
                         <option disabled selected>
@@ -113,8 +115,9 @@ const AddProduct = () => {
                       </label>
                       <input
                         type="text"
+                        required
                         name="description"
-                        placeholder="Lancer EX"
+                        placeholder="Jossssss"
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -124,9 +127,10 @@ const AddProduct = () => {
                         Product Used (in Years)
                       </label>
                       <input
+                        required
                         type="text"
                         name="used"
-                        placeholder="Lancer EX"
+                        placeholder="ie: 3 years"
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -137,6 +141,7 @@ const AddProduct = () => {
                       </label>
                       <input
                         type="email"
+                        required
                         name="email"
                         defaultValue={user?.email}
                         disabled
@@ -150,9 +155,10 @@ const AddProduct = () => {
                         Original Price
                       </label>
                       <input
+                        required
                         name="originalPrice"
                         type="text"
-                        placeholder="Enter number in lacs"
+                        placeholder="Enter in lacs. ie: 99"
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -161,9 +167,10 @@ const AddProduct = () => {
                         Resell Price
                       </label>
                       <input
+                        required
                         name="resellPrice"
                         type="text"
-                        placeholder="Enter number in lacs"
+                        placeholder="Enter in lacs. ie: 77"
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -172,9 +179,10 @@ const AddProduct = () => {
                         Condition
                       </label>
                       <input
+                        required
                         name="condition"
                         type="text"
-                        placeholder="ie Used.Like New"
+                        placeholder="ie: Used.Like New"
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -183,8 +191,11 @@ const AddProduct = () => {
                         Seller Name
                       </label>
                       <input
+                        required
                         name="sellerName"
                         type="text"
+                        defaultValue={user.displayName}
+                        disabled
                         placeholder=""
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />

@@ -56,7 +56,7 @@ const Signup = () => {
       isVerified: false,
     };
     // console.log(user);
-    fetch("http://localhost:5000/users", {
+    fetch("https://y-xi-khaki.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -78,7 +78,7 @@ const Signup = () => {
       isVerified: false,
     };
     // console.log(user);
-    fetch("http://localhost:5000/users", {
+    fetch("https://y-xi-khaki.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -89,7 +89,7 @@ const Signup = () => {
       .then((data) => {
         // console.log(data);
         toast.success("User Successfully Logged In");
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://y-xi-khaki.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -113,7 +113,7 @@ const Signup = () => {
   };
   return (
     <div className="my-10 container mx-auto">
-      <div className="lg:flex">
+      <div className="lg:flex ">
         <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
           <div className=" w-3/4 h-fit bg-white rounded-lg dark:bg-gray-800">
             <div className="p-5 text-center">
@@ -174,9 +174,9 @@ const Signup = () => {
           </div>
         </div>
 
-        <div className="w-full h-64 lg:w-1/2 lg:h-full px-6 py-8 m-9">
-          <div className="w-full h-full bg-cover">
-            <img src={img} alt="" className="w-full h-96" />
+        <div className="">
+          <div className="">
+            <img src={img} alt="" className=" w-full" />
           </div>
         </div>
       </div>

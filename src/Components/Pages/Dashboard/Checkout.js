@@ -13,7 +13,7 @@ const Checkout = ({ price, name, email, _id, productID }) => {
   console.log(price, name, email, _id, productID);
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://y-xi-khaki.vercel.app/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ price }),
@@ -66,7 +66,7 @@ const Checkout = ({ price, name, email, _id, productID }) => {
         bookingId: _id,
         productID: productID,
       };
-      fetch("http://localhost:5000/payments", {
+      fetch("https://y-xi-khaki.vercel.app/payments", {
         method: "PUT",
         headers: {
           "content-type": "application/json",

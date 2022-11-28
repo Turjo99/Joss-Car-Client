@@ -8,7 +8,7 @@ const CarCard = ({ car, handleReport, setCarDetail, sellerEmail }) => {
   const [user, setUser] = useState({});
   // useEffect
   useEffect(() => {
-    fetch(`http://localhost:5000/users?email=${car.email}`)
+    fetch(`https://y-xi-khaki.vercel.app/users?email=${car.email}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data);

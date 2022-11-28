@@ -11,7 +11,7 @@ const Cars = () => {
   const handleReport = (id) => {
     const proceed = window.confirm("Do you want report this item");
     if (proceed) {
-      fetch(`http://localhost:5000/allcars/report/${id}`, {
+      fetch(`https://y-xi-khaki.vercel.app/allcars/report/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())

@@ -7,13 +7,13 @@ const ReportedProduct = () => {
     queryKey: ["products"],
     queryFn: () =>
       fetch(
-        `http://localhost:5000/allsellers/reportedproduct?isReported=yes&isAvailable=yes`
+        `https://y-xi-khaki.vercel.app/allsellers/reportedproduct?isReported=yes&isAvailable=yes`
       ).then((res) => res.json()),
   });
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to Delete this buyer?");
     if (proceed) {
-      fetch(`http://localhost:5000/report/delete/${id}`, {
+      fetch(`https://y-xi-khaki.vercel.app/report/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

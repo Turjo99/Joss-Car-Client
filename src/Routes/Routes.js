@@ -38,7 +38,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allcars?categoryID=${params.id}`),
+          fetch(
+            `https://y-xi-khaki.vercel.app/allcars?categoryID=${params.id}`
+          ),
       },
       {
         path: "/signup",
@@ -126,7 +128,7 @@ export const router = createBrowserRouter([
         path: `mybooking/payment/:id`,
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/booking/payment/${params.id}`),
+          fetch(`https://y-xi-khaki.vercel.app/booking/payment/${params.id}`),
       },
       {
         path: "reported",

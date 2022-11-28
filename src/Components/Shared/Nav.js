@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import logo from "../../imgs/vintage-car.png";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
@@ -8,11 +9,7 @@ const Nav = () => {
   const handleLogOut = () => {
     logout().then({}).catch({});
   };
-  useEffect(() => {
-    fetch(`http://localhost:5000/users?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setName(data[0].name));
-  }, [user?.email]);
+
   // console.log(name);
   const menuItems = (
     <>
@@ -36,7 +33,7 @@ const Nav = () => {
             <Link to={"/"}>Logout</Link>
           </li>
           <li>
-            <Link>{name}</Link>
+            <Link>{user.displayName}</Link>
           </li>
         </>
       ) : (
@@ -78,6 +75,7 @@ const Nav = () => {
             {menuItems}
           </ul>
         </div>
+        <img className=" w-12 relative left-4" src={logo} alt="" />
         <Link to={"/"} className="btn btn-ghost normal-case text-xl">
           Joss Cars
         </Link>

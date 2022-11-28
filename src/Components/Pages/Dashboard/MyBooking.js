@@ -10,7 +10,7 @@ const MyBooking = () => {
   // const { data: bookings = [], refetch } = useQuery({
   //   queryKey: ["bookings"],
   //   queryFn: () =>
-  //     fetch(`http://localhost:5000/booking?email=${user.email}`).then((res) =>
+  //     fetch(`https://y-xi-khaki.vercel.app/booking?email=${user.email}`).then((res) =>
   //       res.json()
   //     ),
   // });
@@ -23,7 +23,7 @@ const MyBooking = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/booking?email=${user.email}`,
+          `https://y-xi-khaki.vercel.app/booking?email=${user.email}`,
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("accessToken")}`,

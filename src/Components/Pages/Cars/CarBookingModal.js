@@ -24,7 +24,7 @@ const CarBookingModal = ({ carDetail }) => {
       isAvailable: "yes",
       productID: _id,
     };
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://y-xi-khaki.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

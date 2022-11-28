@@ -10,11 +10,14 @@ const AllBuyers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/allsellers?role=buyer`, {
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
+        const res = await fetch(
+          `https://y-xi-khaki.vercel.app/allsellers?role=buyer`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
         const data = await res.json();
         return data;
       } catch (error) {}
@@ -23,7 +26,7 @@ const AllBuyers = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to Delete this buyer?");
     if (proceed) {
-      fetch(`http://localhost:5000/users/delete/${id}`, {
+      fetch(`https://y-xi-khaki.vercel.app/users/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

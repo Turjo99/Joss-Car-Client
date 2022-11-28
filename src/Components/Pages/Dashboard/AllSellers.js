@@ -11,7 +11,7 @@ const AllSellers = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/allsellers?role=seller`,
+          `https://y-xi-khaki.vercel.app/allsellers?role=seller`,
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -27,7 +27,7 @@ const AllSellers = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to delete this seller?");
     if (proceed) {
-      fetch(`http://localhost:5000/users/delete/${id}`, {
+      fetch(`https://y-xi-khaki.vercel.app/users/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -40,7 +40,7 @@ const AllSellers = () => {
     }
   };
   const handleverify = (id) => {
-    fetch(`http://localhost:5000/users/verify/${id}`, {
+    fetch(`https://y-xi-khaki.vercel.app/users/verify/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())

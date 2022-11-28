@@ -9,7 +9,7 @@ const AdvertisedProduct = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/advertised?isAdvertised=yes&isAvailable=yes`
+          `https://y-xi-khaki.vercel.app/advertised?isAdvertised=yes&isAvailable=yes`
         );
         const data = await res.json();
         return data;

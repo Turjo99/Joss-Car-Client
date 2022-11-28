@@ -9,14 +9,14 @@ const MyProducts = () => {
   const { data: products = [], refetch } = useQuery({
     queryKey: ["sellerProducts"],
     queryFn: () =>
-      fetch(`http://localhost:5000/sellerproducts?email=${user?.email}`).then(
-        (res) => res.json()
-      ),
+      fetch(
+        `https://y-xi-khaki.vercel.app/sellerproducts?email=${user?.email}`
+      ).then((res) => res.json()),
   });
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to Delete this buyer?");
     if (proceed) {
-      fetch(`http://localhost:5000/allcars/delete/${id}`, {
+      fetch(`https://y-xi-khaki.vercel.app/allcars/delete/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -29,7 +29,7 @@ const MyProducts = () => {
     }
   };
   const handleAdvertise = (id) => {
-    fetch(`http://localhost:5000/allcars/advertise/${id}`, {
+    fetch(`https://y-xi-khaki.vercel.app/allcars/advertise/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())

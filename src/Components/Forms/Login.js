@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
@@ -10,14 +10,17 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  console.log(from);
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [loginError, setLoginError] = useState("");
   // console.log(loginUserEmail);
   const [token] = useToken(loginUserEmail);
-  if (token) {
-    navigate(from, { replace: true });
-    // console.log(token);
-  }
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+      // console.log(token);
+    }
+  }, [navigate, from, token]);
   const handlelogin = (event) => {
     event.preventDefault();
     setLoginError("");
@@ -42,7 +45,7 @@ const Login = () => {
       isVerified: false,
     };
     console.log(user);
-    fetch("http://localhost:5000/users", {
+    fetch("https://y-xi-khaki.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -53,7 +56,7 @@ const Login = () => {
       .then((data) => {
         console.log(data);
         toast.success("User Successfully Logged In");
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://y-xi-khaki.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -81,9 +84,9 @@ const Login = () => {
   return (
     <div className="my-10 container mx-auto">
       <div className="lg:flex">
-        <div className="w-full h-64 lg:w-1/2 lg:h-full px-6 py-8 m-9">
-          <div className="w-full h-full bg-cover">
-            <img src={img} alt="" className="w-full h-96" />
+        <div className="">
+          <div className="">
+            <img src={img} alt="" className="w-full" />
           </div>
         </div>
         <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
