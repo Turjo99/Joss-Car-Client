@@ -23,15 +23,15 @@ const Nav = () => {
         <Link to={"/blogs"}>Blogs</Link>
       </li>
 
-      <li>
-        <Link to={"/dashboard"}>Dashboard</Link>
-      </li>
-
       {user?.email ? (
         <>
+          <li>
+            <Link to={"/dashboard"}>Dashboard</Link>
+          </li>
           <li onClick={handleLogOut}>
             <Link to={"/"}>Logout</Link>
           </li>
+
           <li>
             <Link>{user.displayName}</Link>
           </li>
